@@ -55,14 +55,15 @@ def send_file(number,caminhoFile):
     driver.get(sendMensage(number))
     espereFull(); 
     click('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/div/span'); 
-    click('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[4]/button/span') ; #campo arquivos do whatsapp 
+    file = driver.find_element_by_css_selector("input[type='file']"); #campo arquivos do whatsapp 
     sleep(1); 
-    pg.write(str(caminhoFile)); 
-    pg.press("enter"); 
-    sleep(3); 
-    pg.press("enter"); 
-    sleep(randint(3,7))
-
+    file.send_keys(caminhoFile)
+    sleep(3)
+    send = driver.find_element_by_css_selector("span[data-icon='send']")
+    send.click()    
+    
+    
+    
 def finalizeWhatsapp():
     espere('side'); 
     sleep(3); 
@@ -78,11 +79,12 @@ if __name__=="__main__":
     numero = "5562998080215"; 
 
     driver = webdriver.Chrome(cdm().install());  # abre o google
-    #send_file(numero,r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx"); 
+    send_file(numero,r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx"); 
     #envia_mensagem(numero,"oiiies"); 
     #finalizeWhatsapp(); 
-    driver.get(f"https://web.whatsapp.com/send?phone={str(numero)}&text=oiiis"); 
-    numero_erro(); 
+    #driver.get(f"https://web.whatsapp.com/send?phone={str(numero)}&text=oiiis"); 
+    #numero_erro(); 
     finalizeWhatsapp(); 
-            
+    while True:
+        sleep(1);        
         
