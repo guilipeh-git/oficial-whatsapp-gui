@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename= 'css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'css/static.css')}}">
+    
+    <script src="index.js"></script>
+    <title>Whatsapp Bot</title>
+</head>
+
+<body onload="msg_bot.funInicial()">
+    
+    <form action="/resp" method="POST" id="form" refresh="false" enctype="multipart/form-data">
+        <header id="title">
+            <h1><i> Whatsapp Bot</i></h1>
+            <a href="">Status</a>
+            
+        </header>
+        <section>
+            <div class="form-group">
+                <div id="textarea">
+                    <!--textarea  id="msg">Texto que será enviado... </textarea -->
+                </div>
+                <br>
+                <input type="hidde" name="msgHidden" value="{{texto}}" id="hidden">
+                <input type="button" value="Editar" onclick="msg_bot.editar()" id="btnEditar" class="btn1">
+                <input type="button" value="Cancelar" onclick="msg_bot.cancelar()" id="btnCancelar" class="btn1">
+            </div>
+            <div class="form-group group2">
+                <div style="display: flex; align-items: center;">
+                    <p style="width:26%"><strong>Números de telefone:</strong>
+                        <nav class="menu"><b style="color:white;" >?</b>
+                            
+                                <ul>
+                                    <li><p style="font-size: 15px;">Nesse campo você colocará todos os contatos para qual o bot enviará as mensagens. <br>
+                                        <strong>obs:</strong> Não esqueça a virgula ou ponto e virgula, após a digitação de cada número de telefone. <br> 
+                                    Números incorretos não serão armazenados no campo de contatos a baixo.</p>
+                                        <p><strong>Exemplo : </strong><p>62 998080215; <br> 9 98877551, <br>99562-1200,</p>
+                                    </p></li>
+                                </ul>
+                        
+                            
+                        </nav>
+                        <div  class="totNums">
+                           
+                            <input type="file" id="file" name="file" accept="xlsx/*">
+                            <label>Import: </label>
+                            <img src="../static/images/xls.png" alt="carregar arquivo excel" id="icon" onclick="msg_bot.csv()">
+                            <label id="namefile"></label>
+                            
+
+                        </div>
+                        
+                        
+                        
+                        
+                    </p>
+                </div>
+                <textarea id="number-phone" name="tel" readonly rows="5" placeholder="Insira os numero"></textarea>
+                <div class="totNums1" style="display:inline-block;margin-left:94%;"><i id="contador"></i></div>
+                <input type="text" id="np" name="np" value="{{nums}}">
+                <div class="group-btn">
+                    <input type="button" value="Editar" id="btnEnviar" class="btn1" onclick="msg_bot.enviarNum()">
+                    <input type="button" value="Cancelar" onclick="msg_bot.cancelarNum()" id="btnCancelarNum" class="btn1">
+                </div>
+            </div>
+            
+        </section>
+        <div id="submit">
+            <input type="button" value="Start bot" id="submitBtn"class="btn1" style="width:100px" onclick="msg_bot.btnSubmit()">
+        </div>
+        <footer><p>&copyKiraNext</p></footer>
+
+        <script src="{{url_for('static', filename='javascript/javascript_copy.js')}}"></script>
+        
+    </form>
+    <!--tira recarregamento da pgn-->>
+    </body>
+</html>

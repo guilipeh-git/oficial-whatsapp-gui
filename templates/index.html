@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename= 'css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'css/static.css')}}">
+    
+    <script src="index.js"></script>
+    <title>Whatsapp Bot</title>
+</head>
+
+<body onload="msg_bot.init()">
+    <div style="margin-top:20%;position:absolute;margin: 20% auto;width:100%;" id="loud">
+        <h1 id="botInit">
+            <div id="loginh" style="border:solid 7px #ccc; width:50px;height:50px;border-radius:50%;border-top-color:rgb(0, 217, 255)"></div>
+            
+        </h1>
+        <p id="loading" style="margin:30px 0 0 15px">Loading...</p>
+    </div>
+    
+    <form action="/resp" method="POST" id="form" refresh="false" enctype="multipart/form-data">
+        <header id="title">
+            <h1><i> Whatsapp Bot</i></h1>
+            <a href="">Status</a>
+            
+        </header>
+        <section>
+            <div class="form-group">
+                <div id="textarea">
+                    <!--textarea  id="msg">Texto que será enviado... </textarea -->
+                </div>
+                <br>
+                <input type="hidden" name="msgHidden" value="{{texto}}" id="hidden">
+                <input type="button" value="Editar" onclick="msg_bot.editarMsg()" id="btnEditar" class="btn1">
+                <input type="button" value="Cancelar" onclick="msg_bot.cancelar(1)" id="btnCancelar" class="btn1">
+            </div>
+            <div id="inputNovoNum" class="form-group group2">
+                <input type="text" placeholder="Nome(Opcional)" id="inputNome" style="width:30%">
+                <input type="tel" placeholder="Telefone" id="inputNumero" style="width:30%">
+                <input type="button" value="Salvar" class="btn1" onclick=msg_bot.salvaInput()>
+                <input type="button" value="Cancelar" class="btn1" onclick= msg_bot.cancelar(2)>
+            </div>
+            <div class="form-group group2">
+                <div style="display: flex; align-items: center;">
+                    <p style="width:26%"><strong>Números de telefone:</strong>
+                        <nav class="menu"><b style="color:white;" >?</b>
+                            
+                                <ul>
+                                    <li><p style="font-size: 15px;overflow:auto;height:300px"><strong>Msg:</strong> No campo de mensagem você colocará a mensagem que o bot ira enviar. <br>
+                                    Caso você queira adicionar o nome da pessoa em algum lugar da mensagem, basta colocar {nome}, que o bot vai entender e adicionara o nome da pessoa caso existir. <br> 
+                                <strong>Ex: Sejá bem-vindo {nome}!!!</strong><br> e a mensagem de exemplo que será exibida será:<br> <strong> "Sejá bem-vindo joão!!!"</strong><br><br><strong>Num:</strong>No campo de adição dos números, você adiciona, edita ou exclui um número da lista. <br> O nome é opcional, mais o número é obrigatório. <br><br><strong>Excel:</strong> No arquivo de excel, tem um padrão que você necessita seguir para que o bot consiga ler sua planilha </p></li>
+                                </ul>
+                        
+                            
+                        </nav>
+                        <div  class="totNums">
+                           
+                            <input type="file" id="file" name="file" accept="xlsx/*">
+                            <label>Import: </label>
+                            <img src="../static/images/xls.png" alt="carregar arquivo excel" id="icon" onclick="msg_bot.fileExcel()">
+                            <label id="namefile"></label>
+                            
+
+                        </div>
+                        
+                        
+                        
+                        
+                    </p>
+                </div>
+                    <div style="display:flex;justify-content:space-between">
+                        <input type="button" value="Adicionar Número" id="btnNovoC" class="btn1" onclick="msg_bot.novoNum()" style="margin:0 0 10px 0;">
+                        <p id="qtdNum" style="margin: 0 10px 0 0">0/150</p>
+                    </div>
+                    <!--input type="button" value="Cancelar" onclick="msg_bot.cancelar(2)" id="btnCancelarNum" class="btn1"-->
+                <div id="divTable" style="max-height:350px;overflow:auto;">
+                    <table border="1" style="width:100%;text-align:center; display:none;"> 
+                        <thead style="background:rgb(192, 192, 192)" id="headerTable">
+                            <tr>
+                                <th style="width:50px;">N°</th>
+                                <th style="width:40%;">Nome</th>
+                                <th>Número</th>
+                                <th style="width:150px">Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="totNums1" style="display:inline-block;margin-left:94%;"><i id="contador"></i></div>
+                <input type="hidden" id="np" name="np" value="{{nums}}">
+                
+            </div>
+            
+        </section>
+        <div id="submit">
+            <input type="button" value="Start bot" id="submitBtn"class="btn1" style="width:100px" onclick="msg_bot.btnSubmit()">
+        </div>
+        <footer><p>&copyKiraNext</p></footer>
+
+        <script src="{{url_for('static', filename='javascript/javascript.js')}}"></script>
+        
+    </form>
+    <!--tira recarregamento da pgn-->
+    </body>
+</html>
