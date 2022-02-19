@@ -55,7 +55,7 @@ class WhatsappGUI:
             
         except:
             if(cont <= 0):
-                return print(f"erro ao click na msg,numero talvez esteja incorreto")
+                return print(f"erro ao enviar msg, talvez esteja incorreto")
             #print(cont)
             return self.sendMensage(cont-1)
         sleep(randint(1,2))
@@ -122,10 +122,10 @@ class WhatsappGUI:
         self.sendMensage(3)
             
 ##################################################################
-
-zap = WhatsappGUI() #chamda class 
-zap.startBot() # inicia bot
-zap.envia_msg("567","456789")
-zap.envia_msg("5562998080215","hello world")
-#zap.send_file("5562998080215",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
-zap.finalizeWhatsapp() # bot desloga e fecha chrome
+if __name__ == "__main__":
+    zap = WhatsappGUI() #chamda class 
+    zap.startBot() # inicia bot
+    zap.envia_msg("567","456789")
+    zap.envia_msg("5562998080215","hello world")
+    #zap.send_file("5562998080215",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
+    zap.finalizeWhatsapp() # bot desloga e fecha chrome
