@@ -44,7 +44,7 @@ class WhatsappGUI:
             if self.envia == False:
                 return print("fim")
         except:...
-        sleep(2)
+        sleep(randint(1,2))
         self.numero_erro()
         # o contador mostra  quantas vezes o codigo vai se repetir se tiver um erro
         try:
@@ -55,7 +55,7 @@ class WhatsappGUI:
             
         except:
             if(cont <= 0):
-                return print(f"erro click na msg")
+                return print(f"erro ao click na msg,numero talvez esteja incorreto")
             #print(cont)
             return self.sendMensage(cont-1)
         sleep(randint(1,2))
