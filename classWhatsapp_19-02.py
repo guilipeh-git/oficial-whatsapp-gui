@@ -55,7 +55,7 @@ class WhatsappGUI:
             
         except:
             if(cont <= 0):
-                return print(f"erro ao enviar msg, talvez esteja incorreto")
+                return print(f"erro ao enviar msg, talvez o numero esteja incorreto ou não existe")
             #print(cont)
             return self.sendMensage(cont-1)
         sleep(randint(1,2))
