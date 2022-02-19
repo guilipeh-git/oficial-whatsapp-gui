@@ -84,8 +84,15 @@ class WhatsappGUI:
     
     def send_file(self,number,caminhoFile):
         try:
+            sleep(randint(2,3))
             self.driver.get(self.sendAqvMensage(number))
             self.espere("side")
+            try:
+                if self.envia == False:
+                    return print("fim")
+            except:...
+            sleep(randint(1,2))
+            self.numero_erro()
             sleep(2)
             self.click('//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/div/span'); 
             file = self.driver.find_element_by_css_selector("input[type='file']"); #campo arquivos do whatsapp 
@@ -96,7 +103,7 @@ class WhatsappGUI:
             send.click()    
         except:
             print("erro na funcao send_file")   
-    
+        sleep(1)
     
     
     
@@ -125,7 +132,11 @@ class WhatsappGUI:
 if __name__ == "__main__":
     zap = WhatsappGUI() #chamda class 
     zap.startBot() # inicia bot
-    zap.envia_msg("567","456789")
-    zap.envia_msg("5562998080215","hello world")
-    #zap.send_file("5562998080215",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
+    
+    #zap.envia_msg("567","456789")
+    #zap.envia_msg("5562998080215","hello world")
+    zap.send_file("5562998080215",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
+    zap.send_file("5562998080215",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
+    zap.send_file("55629",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
+    
     zap.finalizeWhatsapp() # bot desloga e fecha chrome
