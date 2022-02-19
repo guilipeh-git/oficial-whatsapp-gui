@@ -14,7 +14,10 @@ def esperePath(path_pg):
 def espere(id_pg):
     cont = 0; 
     while cont < 1:
-        cont = len(driver.find_elements_by_id(id_pg))
+        try:
+            cont = len(driver.find_elements_by_id(id_pg))
+        except:
+            print(f"erro ao ler {id_pg}")
         sleep(1)
   
 def numero_erro():
@@ -38,6 +41,7 @@ enter = lambda enterPath: driver.find_element_by_xpath(enterPath).send_keys(Keys
 sendMensage = lambda number,text="": f"https://web.whatsapp.com/send?phone={str(number)}&text={str(text)}"; 
 
 def espereFull():
+    sleep(3)
     espere("side"); 
     esperePath('//*[@id="main"]/header/div[3]/div/div[1]/div'); 
 
@@ -76,15 +80,14 @@ def finalizeWhatsapp():
 #======================================================================================
 #inicio do bot
 if __name__=="__main__":
-    numero = "5562998080215"; 
+    numero = "55629slkvnsl98080215"; 
 
     driver = webdriver.Chrome(cdm().install());  # abre o google
-    send_file(numero,r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx"); 
+    #send_file(numero,r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx"); 
     #envia_mensagem(numero,"oiiies"); 
     #finalizeWhatsapp(); 
-    #driver.get(f"https://web.whatsapp.com/send?phone={str(numero)}&text=oiiis"); 
-    #numero_erro(); 
+    driver.get(f"https://web.whatsapp.com/send?phone={str(numero)}&text=oiiis"); 
+    numero_erro(); 
     finalizeWhatsapp(); 
     while True:
-        sleep(1);        
-        
+        sleep(1);      
