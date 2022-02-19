@@ -111,20 +111,21 @@ class WhatsappGUI:
             self.driver.close()
         except:
             print("erro na funcao  finalizeWhatsapp")
+    
+    
+    def envia_msg(self,num,msg):
+        if(self.envia == False):return print("parei")
+        self.linkMensagem(num,msg)
+        sleep(randint(1,3))
+        self.numero_erro()
+        #self.espere("side")
+        self.sendMensage(3)
             
 ##################################################################
 
-zap = WhatsappGUI()
-def envia_msg(num,msg):
-    if(zap.envia == False):return print("parei")
-    zap.linkMensagem(num,msg)
-    sleep(randint(1,3))
-    zap.numero_erro()
-    #zap.espere("side")
-    zap.sendMensage(3)
-    
-zap.startBot()
-envia_msg("567","456789")
-envia_msg("5562998080215","hello world")
+zap = WhatsappGUI() #chamda class 
+zap.startBot() # inicia bot
+zap.envia_msg("567","456789")
+zap.envia_msg("5562998080215","hello world")
 #zap.send_file("5562998080215",r"C:\Users\guilh\OneDrive\Documentos\oficial-whatsapp-gui\src\tabelaa.xlsx")
-zap.finalizeWhatsapp()
+zap.finalizeWhatsapp() # bot desloga e fecha chrome
